@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:camera_control_dart/camera_control_dart.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart' as logger_impl;
 
 import 'adapter/wifi_info_adapter.dart';
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 import 'logging/camera_control_logger.dart';
 import 'logging/logger.dart';
 import 'presentation/core/adapter/date_time_adapter.dart';
@@ -61,7 +61,7 @@ void registerDependencies() {
 
 Future<void> setup() async {
   await setupFirebase();
-  setupCrashReporting();
+  // setupCrashReporting();
 
   registerDependencies();
 
@@ -70,18 +70,18 @@ Future<void> setup() async {
 }
 
 Future<void> setupFirebase() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+    // options: DefaultFirebaseOptions.currentPlatform,
+  // );
 }
 
 void setupCrashReporting() {
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
+  // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  // // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
 }
 
 void setupLogging() {
